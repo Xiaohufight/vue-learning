@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>components</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="components-demo">
+    <button-counter></button-counter></br>
+    <button-counter></button-counter></br>
+    <button-counter></button-counter>
+</div>
+<hr>
+<div id = "blog-post-demo">
+    <blog-post
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:id="post.id"
+            v-bind:title="post.title"
+    ></blog-post>
+</div>
+<hr>
+<div id="blog-posts-events-demo">
+    <div :style="{fontSize:postFontSize+'em'}">
+        <new_blog-post
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:post="post"
+            v-on:enlarge-text="postFontSize += 0.1"
+        ></new_blog-post>
+    </div>
+</div>
+<hr>
+<div id="example">
+    <alert-box>
+        Something bad happened.
+    </alert-box>
+</div>
+</body>
+<script type="text/javascript">
+    Vue.component('button-counter',{
+        data:function(){
+            return{
+                count:0
+            }
+        },
+        template:'<button v-on:click="count++">You clicked me {{count}} times.</button>'
+    })
+
+    new Vue({
+        el:'#components-demo'
+    })
+
+    Vue.component('blog-post',{
+        props:['id','title'],
+        template:'<h3>{{id}}&emsp;{{title}}</h3>'
+    })
+
+    Vue.component('new_blog-post', {
+            props: ['post'],
+            template: `
+            <div class="new_blog-post">
+                <h3>{{ post.title }}</h3>
+            <button v-on:click="$emit('enlarge-text')">
+                Enlarge text
+            </button>
+            <div v-html="post.content"></div>
+            </div>
+            `
+})
+    new Vue({
+        el: '#blog-post-demo',
+        data: {
+            posts: [
+                { id: 1, title: 'My journey with Vue' },
+                { id: 2, title: 'Blogging with Vue' },
+                { id: 3, title: 'Why Vue is so fun' }
+            ]
+        }
+    })
+
+    Vue.component('new-blog-post',{
+        props:['post'],
+        template:`
+            <div class="new-blog-post">
+                <h3>{{ post.title }}</h3>
+                <div v-html="post.content"></div>
+            </div>`
+    })
+
+    new Vue({
+        el:'#blog-posts-events-demo',
+        data:{
+            posts:[
+                { id: 1, title: 'My journey with Vue', content:'...content...'},
+                { id: 2, title: 'Blogging with Vue' ,  content:'...content...'},
+                { id: 3, title: 'Why Vue is so fun',   content:'...content...'}],
+            postFontSize:1
+        }
+    })
+
+
+    Vue.component('alert-box', {
+        template: `
+            <div class="demo-alert-box">
+            <strong>Error!</strong>
+            <slot></slot>
+            </div>
+        `
+    })
+
+    new Vue({
+        el:'#example'
+    })
+</script>
+
+</html>

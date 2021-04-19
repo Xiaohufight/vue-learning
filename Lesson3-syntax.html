@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<hr lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>syntax</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<div id="app1">
+    <span>Message:{{msg}}</span>
+</div>
+<hr>
+<div id="app2">
+    <span v-once>这个将不会改变:{{msg}}</span>
+</div>
+<hr>
+<div id="app3">
+    <div v-bind:id="dynamicId">123</div>
+</div>
+<hr>
+<div id="app4">
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+</div>
+<hr>
+</body>
+<script type="text/javascript">
+    var app1 = new Vue({
+        el:'#app1',
+        data:{
+            msg:"Hello!"
+        }
+    })
+
+    var app2= new Vue({
+        el:'#app2',
+        data:{
+            msg:'Fight!'
+        }
+    })
+    var app3=new Vue({
+        el:'#app3',
+        data:{
+            dynamicId:"123",
+
+        }
+    })
+    var app4=new Vue({
+        el:'#app4',
+        data:{
+           isButtonDisabled:false
+        }
+    })
+</script>
+</html>

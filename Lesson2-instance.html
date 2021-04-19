@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>instance</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app1">
+    <p>{{a}}</p>
+</div>
+</body>
+
+<script type="text/javascript">
+    var data = {a:1}
+    //Object.freeze(data)
+    var vm = new Vue({
+        el:'#app1',
+        data:data
+    })
+    vm.$watch('a',function(newValue,oldValue){
+        console.log("a的值被改变了");
+        console.log(newValue,oldValue);
+    })
+
+</script>
+</html>

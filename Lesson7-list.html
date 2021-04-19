@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<ul id="example-1">
+    <li v-for="item in items" :key="item.message">
+        {{item.message}}
+    </li>
+</ul>
+
+<hr>
+<ul id="example-2">
+    <li v-for="(item,index) in items">
+        {{parentMessage}}-{{index}}-{{item.message}}
+    </li>
+</ul>
+<hr>
+
+<ul id="example-3" class="demo">
+    <li v-for="value in object">
+        {{value}}
+    </li>
+</ul>
+<hr>
+
+<div id="example-4" v-for="(value,name,index) in object">
+    {{index}}.{{name}}:{{value}}
+</div>
+<hr>
+<div id="example-5">
+    <span v-for="n in 10">{{ n }}</span>
+</div>
+<hr>
+<div id="example-6">
+    <li v-for="n in evenNumbers">{{n}}</li>
+</div>
+<hr>
+<div id="example-7">
+    <ul>
+        <template v-for="item in items">
+            <li>{{item.msg}}</li>
+            <li class="divider" role="presentation"></li>
+        </template>
+    </ul>
+</div>
+<hr>
+<div id="todo-list-example">
+    <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a todo</label>
+        <input
+                v-model="newTodoText"
+                id="new-todo"
+                placeholder="E.g. Feed the cat"
+        >
+        <button>Add</button>
+    </form>
+    <ul>
+        <li
+                is="todo-item"
+                v-for="(todo, index) in todos"
+                v-bind:key="todo.id"
+                v-bind:title="todo.title"
+                v-on:remove="todos.splice(index, 1)"
+        ></li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    var example1 = new Vue({
+        el:'#example-1',
+        data:{
+            items:[
+                {message:'Foo'},
+                {message:'Bar'},
+                {message:'Wake'}
+            ]
+        }
+    })
+
+    var example2 = new Vue({
+        el:'#example-2',
+        data:{
+            parentMessage:'Parent',
+            items:[
+                {message:'Foo'},
+                {message:'Bar'},
+                {message:'Wake'}
+            ]
+        }
+    })
+
+    var example3 = new Vue({
+        el:'#example-3',
+        data:{
+            object:{
+                title:'How to do lists in Vue',
+                author:'Jane Doe',
+                publishedAt:'2016-04-10'
+            }
+        }
+    })
+
+    var example4 = new Vue({
+        el:'#example-4',
+        data:{
+            object:[
+                { title:'How to do lists in Vue' },
+                { author:'Jane Doe' },
+                { publishedAt:'2016-04-10' }
+            ]
+        }
+    })
+
+    var example5 = new Vue({
+        el:'#example-5'
+    })
+
+    var example6 = new Vue({
+        el:'#example-6',
+        data:{
+            numbers:[1,2,3,4,5,6,7,8]
+        },
+        computed:{
+            evenNumbers:function(){
+                return this.numbers.filter(function(number){
+                    return number%2===0
+                })
+            }
+        }
+    })
+
+    var example7 = new Vue({
+        el:'#example-7',
+        data:{
+            items:[
+                {  msg:'fight' },
+                {  msg:'time'},
+            ],
+        }
+    })
+
+    Vue.component('todo-item', {
+  template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">Remove</button>\
+    </li>\
+  ',
+  props: ['title']
+})
+
+new Vue({
+  el: '#todo-list-example',
+  data: {
+    newTodoText: '',
+    todos: [
+      {
+        id: 1,
+        title: 'Do the dishes',
+      },
+      {
+        id: 2,
+        title: 'Take out the trash',
+      },
+      {
+        id: 3,
+        title: 'Mow the lawn'
+      }
+    ],
+    nextTodoId: 4
+  },
+  methods: {
+    addNewTodo: function () {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
+    }
+  }
+})
+</script>
+</html>

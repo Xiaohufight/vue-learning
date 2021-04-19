@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>conditional</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app1">
+    <h1 v-if="awesome">Vue is awesome!</h1>
+    <h1 v-else>Oh no</h1>
+</div><hr>
+<div id="app2">
+<template v-if="ok">
+    <h1>Title</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+</template>
+</div><hr>
+<div id="app3" >
+    <button @click="doSomething">点击按钮</button>
+</div><hr>
+<div id="app4">
+    <template v-if="loginType==='username'">
+        <label>Username</label>
+        <input placeholder="Enter your username"key="username-input">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address"key="email-input">
+    </template>
+    <br/>
+    <button @click="change">Toggle login type</button>
+</div>
+</body>
+<script type="text/javascript">
+    var app1 = new Vue({
+        el:"#app1",
+        data:{
+            awesome:true
+        }
+    })
+    var app2 = new Vue({
+        el:"#app2",
+        data:{
+            ok:true
+        }
+    })
+    var app3 = new Vue({
+        el:'#app3',
+        methods:{
+            doSomething:function(){
+                console.log("哈哈哈");
+            }
+        }
+    })
+    var app4 = new Vue({
+        el:'#app4',
+        data:{
+            loginType:'username'
+        },
+        methods:{
+            change:function(){
+                if(this.loginType==='username'){
+                    this.loginType='email'
+                }
+                else{
+                    this.loginType='username'
+                }
+            }
+        }
+    })
+</script>
+
+</html>
