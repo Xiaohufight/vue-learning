@@ -10,9 +10,23 @@
 
 ​		静心学习，无限进步！
 
-​		源码：https://gitee.com/xiaohufight/vue-learning
+​		学习笔记含代码：https://github.com/Xiaohufight/vue-learning
+
+​        其他vue的在做练手项目：
+
+​		https://github.com/Xiaohufight/my-vue-template
+
+​        https://github.com/Xiaohufight/my-admin-template
 
 ## 学习日志
+
+**2021-4-28~29**
+
+因为毕设的事情，距离上次学习Vue已经过去十几天了，这俩天主要学习了如何实现侧边导航栏和面包屑，导航栏参考了[Vue 实现左边导航栏且右边显示具体内容（element-ui）](https://www.cnblogs.com/mica/p/10790976.html)，面包屑和标签参考了  作者"@雨点的名字"的 [Vue + Element-ui实现后台管理系统(3)---面包屑 + Tag标签切换功能](https://www.cnblogs.com/qdhxhz/p/12590324.html)
+
+顺便放一下他的github源码，创作不易，欢迎star  
+
+https://github.com/yudiandemingzi/mall-manage-system
 
 **2021-4-15**
 
