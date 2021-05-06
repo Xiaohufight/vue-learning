@@ -4,7 +4,9 @@
 
 ​		这个笔记参考了官方文档和多篇文章，虽然是自己一个字一个字手打的，但还是算是转载，并非原创。分享
 
-这个笔记的作用一是监督自己，二是希望帮助到和我一样在学习vue的小伙伴。
+这个笔记的作用一是监督自己，二是希望帮助到和我一样在学习vue的小伙伴。虽说是Vue学习，其实也包含了一
+
+些别的前端的东西。
 
 ​		同时，我自己照着教程写的程序源码也会在下面分享出来。
 
@@ -12,13 +14,17 @@
 
 ​		学习笔记含代码：https://github.com/Xiaohufight/vue-learning
 
-​        其他vue的在做练手项目：
+​        其他在做的vue练手项目：
 
 ​		https://github.com/Xiaohufight/my-vue-template
 
 ​        https://github.com/Xiaohufight/my-admin-template
 
 ## 学习日志
+
+**2021-5-06**
+
+今天无聊翻看github，发现关注的一位大佬上传了自己的prettier配置文件，我就很好奇这个prettier是个啥东东。看了一些文章博客，了解到prettier是一个 Opinionated 的**代码格式化**工具，具体可以看这一篇文[章Prettier看这一篇就行了](https://zhuanlan.zhihu.com/p/81764012?from_voters_page=true)。我之前自己写的代码是不用ESLint的，因为觉得坑太多了，不如不用。但是，今天也打算之后的项目还是要用用prettier和ESLint的，团队开发，代码风格和规范要做好。
 
 **2021-4-28~29**
 
